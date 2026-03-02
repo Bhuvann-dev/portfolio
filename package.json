@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "concurrently --kill-others --raw \"npm run dev --prefix apps/web\"",
-    "build": "cd apps/web && npm install && npm run build",
+    "build": "cd apps/web && npm install && npx vite build",
     "start": "cd apps/web && npm start",
     "lint": "cd apps/web && npm run lint",
     "predeploy": "cd apps/web && npm run build",
