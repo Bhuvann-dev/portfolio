@@ -1,55 +1,63 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { GraduationCap, Briefcase, Award } from 'lucide-react';
+import { GraduationCap, Briefcase } from 'lucide-react';
 
 const ExperienceSection = () => {
   const experiences = [
     {
-      type: 'education',
-      icon: GraduationCap,
-      title: 'Bachelor of Technology in Computer Science',
-      institution: 'Reva University',
-      date: '2021 - 2024',
-      description: 'Focused on software engineering, data structures, algorithms, and web development. Graduated with honors.',
+      type: 'work',
+      icon: Briefcase,
+      title: 'Full Stack Development Program',
+      institution: 'KodNest, Bangalore',
+      date: 'Dec 2025 – Jun 2026',
+      description: 'Intensive Java & Python full-stack program — data structures & algorithms, Spring Boot REST APIs, SQL, and building complete web applications end to end.',
       color: 'from-blue-500 to-cyan-500'
     },
     {
       type: 'work',
       icon: Briefcase,
-      title: 'Frontend Training',
-      institution: 'Technicolor',
-      date: 'Dec 2024 - Jun 2025',
-      description: 'Developed and maintained web applications using React and Node.js. Collaborated with cross-functional teams to deliver high-quality solutions.',
+      title: 'Freelance 3D / AR Artist',
+      institution: 'Self-Employed, Bangalore',
+      date: 'Feb 2025 – Nov 2025',
+      description: 'Delivered 3D asset and AR visualization work for client projects while self-studying software engineering and full-stack web development.',
       color: 'from-emerald-500 to-teal-500'
     },
-    // {
-    //   type: 'work',
-    //   icon: Briefcase,
-    //   title: 'Freelance Web Developer',
-    //   institution: 'Self-Employed',
-    //   date: 'Jan 2022 - Present',
-    //   description: 'Built custom websites and web applications for clients across various industries. Specialized in responsive design and modern frameworks.',
-    //   color: 'from-purple-500 to-pink-500'
-    // },
     {
-      type: 'certification',
-      icon: Award,
-      title: 'Full Stack Web Development Certification',
-      institution: 'Online Learning Platform',
-      date: '2025',
-      description: 'Comprehensive certification covering MERN stack, REST APIs, authentication, and deployment strategies.',
-      color: 'from-orange-500 to-red-500'
+      type: 'work',
+      icon: Briefcase,
+      title: '3D Asset Generalist — Technical Art Track',
+      institution: 'Technicolor Academy, Hyderabad',
+      date: 'Jun 2024 – Jan 2025',
+      description: 'Built procedural tools and automation in Houdini using VEX scripting; debugged complex node networks and created reusable, non-destructive pipelines.',
+      color: 'from-violet-500 to-purple-500'
     },
     {
-      type: 'certification',
-      icon: Award,
-      title: 'React Advanced Patterns',
-      institution: 'Tech Academy',
-      date: '2023',
-      description: 'Advanced React concepts including hooks, context API, performance optimization, and state management.',
-      color: 'from-indigo-500 to-purple-500'
+      type: 'work',
+      icon: Briefcase,
+      title: 'Junior 3D Quality Assurance Specialist',
+      institution: 'CharpstAR',
+      date: 'Apr 2024 – Jun 2024',
+      description: 'Tested augmented-reality experiences across devices, documented defects against acceptance criteria, and verified fixes with the development team.',
+      color: 'from-amber-500 to-orange-500'
+    },
+    {
+      type: 'education',
+      icon: GraduationCap,
+      title: 'B.Sc. in Computer Science',
+      institution: 'Reva University, Bangalore',
+      date: '2021 – 2024',
+      description: 'Undergraduate degree in computer science — the foundation in programming, data structures, and software fundamentals.',
+      color: 'from-sky-500 to-blue-500'
+    },
+    {
+      type: 'education',
+      icon: GraduationCap,
+      title: 'Pre-University College',
+      institution: "Alva's PU College, Vidyagiri",
+      date: '2019 – 2021',
+      description: 'Completed pre-university education before pursuing computer science at university.',
+      color: 'from-pink-500 to-rose-500'
     }
-    
   ];
 
   return (
