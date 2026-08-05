@@ -77,6 +77,8 @@ const TechStackSection = () => {
     },
   ];
 
+  const marqueeTech = techCategories.flatMap((c) => c.technologies);
+
   return (
     <section className="py-20 bg-muted/30 relative overflow-hidden">
       <div className="container mx-auto px-4">
@@ -85,6 +87,22 @@ const TechStackSection = () => {
           title="Tech Stack"
           subtitle="Technologies and tools I use to bring ideas to life"
         />
+
+        {/* Infinite marquee of tech logos */}
+        <div className="relative mb-14 overflow-hidden [mask-image:linear-gradient(90deg,transparent,#000_10%,#000_90%,transparent)]">
+          <div className="flex w-max gap-12 animate-marquee hover:[animation-play-state:paused]">
+            {[...marqueeTech, ...marqueeTech].map((t, i) => (
+              <div key={i} className="flex items-center gap-2.5 shrink-0">
+                <t.Icon
+                  className={`w-7 h-7 ${t.themed ? 'text-foreground' : ''}`}
+                  style={t.themed ? undefined : { color: t.color }}
+                  aria-hidden="true"
+                />
+                <span className="font-mono text-sm text-muted-foreground whitespace-nowrap">{t.name}</span>
+              </div>
+            ))}
+          </div>
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {techCategories.map((category, categoryIndex) => (

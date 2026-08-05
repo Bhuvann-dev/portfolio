@@ -14,17 +14,17 @@
     --accent: 258 90% 62%;
     --accent-foreground: 0 0% 100%;
 
-    --background: 0 0% 100%;
+    --background: 240 20% 98%;
     --foreground: 240 10% 8%;
 
     --card: 0 0% 100%;
     --card-foreground: 240 10% 8%;
 
-    --muted: 240 5% 96%;
-    --muted-foreground: 240 4% 44%;
+    --muted: 240 10% 94%;
+    --muted-foreground: 240 4% 42%;
 
-    --border: 240 6% 90%;
-    --input: 240 6% 90%;
+    --border: 240 8% 88%;
+    --input: 240 8% 88%;
     --ring: 258 90% 62%;
 
     --destructive: 0 72% 51%;
@@ -138,4 +138,25 @@ body::after {
 /* Accent radial glow for hero */
 .accent-glow {
   background: radial-gradient(60% 60% at 50% 40%, hsl(var(--primary) / 0.22), transparent 70%);
+}
+
+/* In light mode, lift solid cards off the near-white background */
+:root:not(.dark) .bg-card {
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.04), 0 6px 20px rgb(0 0 0 / 0.05);
+}
+
+/* Marquee (tech logo row) */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee 34s linear infinite;
+  will-change: transform;
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee { animation: none; }
+  html { scroll-behavior: auto; }
 }
