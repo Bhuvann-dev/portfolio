@@ -1,148 +1,128 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Code2, Server, Database, TrendingUp, Award, Zap } from 'lucide-react';
+import { Code2, Server, Database, TrendingUp, Award, Zap, Target } from 'lucide-react';
 import SectionHeading from '@/components/SectionHeading';
 
 const AboutSection = () => {
-  const [stats, setStats] = useState({
-    years: 0,
-    projects: 0,
-    technologies: 0
-  });
+  const [stats, setStats] = useState({ years: 0, projects: 0, technologies: 0 });
 
   useEffect(() => {
-    const targetStats = { years: 3, projects: 5, technologies: 20 };
-    const duration = 2000;
-    const steps = 60;
-    const interval = duration / steps;
-
-    let currentStep = 0;
+    const target = { years: 3, projects: 5, technologies: 20 };
+    const steps = 50;
+    let current = 0;
     const timer = setInterval(() => {
-      currentStep++;
-      const progress = currentStep / steps;
-      
+      current++;
+      const p = current / steps;
       setStats({
-        years: Math.floor(targetStats.years * progress),
-        projects: Math.floor(targetStats.projects * progress),
-        technologies: Math.floor(targetStats.technologies * progress)
+        years: Math.floor(target.years * p),
+        projects: Math.floor(target.projects * p),
+        technologies: Math.floor(target.technologies * p),
       });
-
-      if (currentStep >= steps) {
-        setStats(targetStats);
+      if (current >= steps) {
+        setStats(target);
         clearInterval(timer);
       }
-    }, interval);
-
+    }, 30);
     return () => clearInterval(timer);
   }, []);
 
   const skillAreas = [
-    {
-      icon: Code2,
-      title: 'Frontend Development',
-      skills: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS'],
-      color: 'from-blue-500 to-cyan-500'
-    },
-    {
-      icon: Server,
-      title: 'Backend Development',
-      skills: ['Java', 'Spring Boot', 'Node.js', 'FastAPI'],
-      color: 'from-emerald-500 to-teal-500'
-    },
-    {
-      icon: Database,
-      title: 'Databases & DevOps',
-      skills: ['PostgreSQL', 'MongoDB', 'Firestore', 'Docker'],
-      color: 'from-purple-500 to-pink-500'
-    }
+    { icon: Code2, title: 'Frontend', skills: ['React', 'Next.js', 'TypeScript', 'Tailwind'] },
+    { icon: Server, title: 'Backend', skills: ['Java', 'Spring Boot', 'Node.js', 'FastAPI'] },
+    { icon: Database, title: 'Databases & DevOps', skills: ['PostgreSQL', 'MongoDB', 'Firestore', 'Docker'] },
   ];
 
-  const statsData = [
-    { label: 'Years Learning', value: stats.years, icon: TrendingUp },
-    { label: 'Projects Built', value: stats.projects, icon: Award },
-    { label: 'Technologies Used', value: stats.technologies, icon: Zap }
-  ];
+  const tile = 'rounded-2xl border border-border bg-card p-6 transition-colors duration-300 hover:border-primary/40';
+  const reveal = {
+    initial: { opacity: 0, y: 20 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true },
+  };
 
   return (
     <section id="about" className="py-20 bg-background relative overflow-hidden">
       <div className="container mx-auto px-4">
-        <SectionHeading
-          eyebrow="about me"
-          title="About Me"
-          subtitle="I'm a Full Stack Developer who builds complete web applications end to end — from database and REST APIs through to polished React interfaces. I came into software from a technical-art background, and that mix of problem-solving and craft shapes everything I build."
-        />
+        <SectionHeading eyebrow="about me" title="About Me" />
 
-        {/* Stats Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
-          {statsData.map((stat, index) => (
-            <motion.div
-              key={stat.label}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-card/50 backdrop-blur-sm border border-border rounded-xl p-6 text-center hover:shadow-xl transition-all duration-300 hover:scale-105"
-            >
-              <stat.icon className="w-12 h-12 mx-auto mb-4 text-primary" />
-              <div className="text-4xl font-bold text-foreground mb-2">
-                {stat.value}+
-              </div>
-              <div className="text-muted-foreground font-medium">
-                {stat.label}
-              </div>
-            </motion.div>
-          ))}
-        </div>
+        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-4 auto-rows-[minmax(150px,auto)]">
+          {/* Lead narrative — big anchor tile */}
+          <motion.div
+            {...reveal}
+            transition={{ duration: 0.5 }}
+            className={`${tile} md:col-span-2 md:row-span-2 flex flex-col justify-center`}
+          >
+            <p className="eyebrow mb-4"><span className="text-primary/50">{'//'}</span> full-stack, end to end</p>
+            <h3 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-4 leading-tight">
+              I turn ideas into products — from database to interface.
+            </h3>
+            <p className="text-muted-foreground leading-relaxed">
+              I build complete web applications across the stack: React &amp; Next.js on the front,
+              Java/Spring Boot, Node and FastAPI on the back. I came into software from a technical-art
+              background — writing scripts and automation tools in a production pipeline — and that mix
+              of problem-solving and craft shapes everything I ship.
+            </p>
+          </motion.div>
 
-        {/* Skill Areas */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-          {skillAreas.map((area, index) => (
+          {/* Stat: Years */}
+          <motion.div {...reveal} transition={{ duration: 0.5, delay: 0.05 }} className={`${tile} flex flex-col justify-between`}>
+            <TrendingUp className="w-6 h-6 text-primary" />
+            <div>
+              <div className="font-display text-4xl font-bold text-foreground">{stats.years}+</div>
+              <div className="text-sm text-muted-foreground">Years building</div>
+            </div>
+          </motion.div>
+
+          {/* Stat: Projects */}
+          <motion.div {...reveal} transition={{ duration: 0.5, delay: 0.1 }} className={`${tile} flex flex-col justify-between`}>
+            <Award className="w-6 h-6 text-primary" />
+            <div>
+              <div className="font-display text-4xl font-bold text-foreground">{stats.projects}+</div>
+              <div className="text-sm text-muted-foreground">Projects shipped</div>
+            </div>
+          </motion.div>
+
+          {/* Stat: Technologies — accent tile */}
+          <motion.div
+            {...reveal}
+            transition={{ duration: 0.5, delay: 0.15 }}
+            className="rounded-2xl md:col-span-2 p-6 bg-gradient-to-br from-primary to-secondary text-primary-foreground flex items-center justify-between shadow-lg shadow-primary/20"
+          >
+            <div>
+              <div className="font-display text-5xl font-bold">{stats.technologies}+</div>
+              <div className="text-sm font-medium opacity-90">Technologies used</div>
+            </div>
+            <Zap className="w-12 h-12 opacity-80" />
+          </motion.div>
+
+          {/* Skill areas */}
+          {skillAreas.map((area, i) => (
             <motion.div
               key={area.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.15 }}
-              className="group relative bg-card/50 backdrop-blur-sm border border-border rounded-xl p-6 hover:shadow-2xl transition-all duration-300"
+              {...reveal}
+              transition={{ duration: 0.5, delay: 0.2 + i * 0.05 }}
+              className={`${tile} group`}
             >
-              <div className={`absolute inset-0 bg-gradient-to-br ${area.color} opacity-0 group-hover:opacity-10 rounded-xl transition-opacity duration-300`} />
-              
-              <area.icon className="w-12 h-12 mb-4 text-primary group-hover:scale-110 transition-transform duration-300" />
-              
-              <h3 className="text-xl font-bold text-foreground mb-4">
-                {area.title}
-              </h3>
-              
-              <div className="flex flex-wrap gap-2">
-                {area.skills.map((skill, i) => (
-                  <span
-                    key={i}
-                    className="px-3 py-1 text-sm font-medium bg-primary/10 text-primary rounded-full border border-primary/20"
-                  >
-                    {skill}
+              <area.icon className="w-6 h-6 text-primary mb-3 group-hover:scale-110 transition-transform" />
+              <h4 className="font-display font-bold text-foreground mb-3">{area.title}</h4>
+              <div className="flex flex-wrap gap-1.5">
+                {area.skills.map((s) => (
+                  <span key={s} className="px-2.5 py-1 text-xs font-medium bg-muted text-muted-foreground rounded-md border border-border">
+                    {s}
                   </span>
                 ))}
               </div>
             </motion.div>
           ))}
-        </div>
 
-        {/* Goal Statement */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center max-w-3xl mx-auto bg-gradient-to-r from-primary/10 to-secondary/10 border border-primary/20 rounded-xl p-8"
-        >
-          <h3 className="text-2xl font-bold text-foreground mb-4">
-            My Mission
-          </h3>
-          <p className="text-lg text-muted-foreground">
-            Building scalable and user-friendly web applications that solve real-world problems
-            and deliver exceptional user experiences through clean, maintainable code.
-          </p>
-        </motion.div>
+          {/* Mission */}
+          <motion.div {...reveal} transition={{ duration: 0.5, delay: 0.35 }} className={`${tile} flex flex-col justify-center`}>
+            <Target className="w-6 h-6 text-primary mb-3" />
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              On a mission to build scalable, user-friendly apps that solve real problems — with clean,
+              maintainable code.
+            </p>
+          </motion.div>
+        </div>
       </div>
     </section>
   );

@@ -200,7 +200,7 @@ const ContactSection = () => {
               transition={{ duration: 0.6 }}
               className="space-y-8"
             >
-              <div className="bg-card/50 backdrop-blur-sm border border-border rounded-xl p-8">
+              <div className="bg-card border border-border rounded-2xl p-8">
                 <h3 className="text-2xl font-bold text-foreground mb-6">
                   Connect With Me
                 </h3>

@@ -16,7 +16,7 @@ const ProjectCard = ({ project, index, onOpenGallery }) => {
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
       whileHover={{ scale: 1.02, y: -5 }}
-      className="group relative flex flex-col bg-card/50 backdrop-blur-sm border border-border rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300"
+      className="group relative flex flex-col bg-card border border-border rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300"
     >
       {/* Banner: screenshot gallery cover if available, else gradient + icon */}
       {hasGallery ? (

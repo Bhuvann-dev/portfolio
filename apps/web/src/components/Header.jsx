@@ -110,7 +110,7 @@ const Header = () => {
               exit={{ opacity: 0, height: 0 }}
               className="md:hidden mt-4 pb-4"
             >
-              <div className="flex flex-col gap-4 bg-card/50 backdrop-blur-sm rounded-lg p-4 border border-border">
+              <div className="flex flex-col gap-4 bg-card rounded-lg p-4 border border-border">
                 {navLinks.map((link) => (
                   <button
                     key={link.name}

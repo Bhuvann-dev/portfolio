@@ -97,7 +97,7 @@ const CertificationsSection = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.08 }}
               whileHover={{ scale: 1.03, y: -4 }}
-              className="group relative flex flex-col text-left bg-card/60 backdrop-blur-sm border border-border rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300"
+              className="group relative flex flex-col text-left bg-card border border-border rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300"
               aria-label={`View ${cert.title} certificate`}
             >
               {/* Certificate thumbnail */}

@@ -88,7 +88,7 @@ const ExperienceSection = () => {
               >
                 {/* Content Card */}
                 <div className="flex-1 w-full">
-                  <div className="bg-card/50 backdrop-blur-sm border border-border rounded-xl p-6 hover:shadow-xl transition-all duration-300 group">
+                  <div className="bg-card border border-border rounded-2xl p-6 hover:border-primary/40 transition-colors duration-300 group">
                     <div className="flex items-start gap-4">
                       <div className={`p-3 rounded-lg bg-gradient-to-br ${exp.color} flex-shrink-0`}>
                         <exp.icon className="w-6 h-6 text-white" />

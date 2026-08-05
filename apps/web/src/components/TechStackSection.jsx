@@ -94,7 +94,7 @@ const TechStackSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: categoryIndex * 0.1 }}
-              className="bg-card/50 backdrop-blur-sm border border-border rounded-xl p-6 hover:shadow-xl transition-all duration-300"
+              className="bg-card border border-border rounded-2xl p-6 hover:border-primary/40 transition-colors duration-300"
             >
               <div className="flex items-center gap-3 mb-6">
                 <div className={`p-3 rounded-lg bg-gradient-to-br ${category.color}`}>
@@ -114,7 +114,7 @@ const TechStackSection = () => {
                     viewport={{ once: true }}
                     transition={{ duration: 0.3, delay: categoryIndex * 0.1 + techIndex * 0.05 }}
                     whileHover={{ scale: 1.05, x: 5 }}
-                    className="flex items-center gap-3 p-3 rounded-lg bg-background/50 border border-border/50 hover:border-primary/50 hover:shadow-lg transition-all duration-300 cursor-pointer group"
+                    className="flex items-center gap-3 p-3 rounded-lg bg-muted/40 border border-border hover:border-primary/50 hover:bg-muted transition-colors duration-300 cursor-pointer group"
                   >
                     <tech.Icon
                       className={`w-7 h-7 flex-shrink-0 transition-transform duration-300 group-hover:scale-125 ${
