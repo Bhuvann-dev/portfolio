@@ -12,7 +12,7 @@ import SectionHeading from '@/components/SectionHeading';
 const CONTACT_EMAIL = 'bhuvann67@gmail.com';
 // After creating a form at https://formspree.io, paste its ID here (e.g. 'xldeqvwk').
 // Until then, the form gracefully falls back to opening the visitor's email client.
-const FORMSPREE_FORM_ID = 'YOUR_FORMSPREE_ID';
+const FORMSPREE_FORM_ID = 'mnpaqpwj';
 const isFormspreeConfigured =
   FORMSPREE_FORM_ID && FORMSPREE_FORM_ID !== 'YOUR_FORMSPREE_ID';
 
