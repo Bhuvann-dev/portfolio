@@ -1,6 +1,28 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Code2, Server, Database, Wrench } from 'lucide-react';
+import {
+  SiReact,
+  SiNextdotjs,
+  SiTypescript,
+  SiJavascript,
+  SiTailwindcss,
+  SiSpringboot,
+  SiNodedotjs,
+  SiExpress,
+  SiFastapi,
+  SiPostgresql,
+  SiMysql,
+  SiMongodb,
+  SiFirebase,
+  SiGit,
+  SiGithub,
+  SiDocker,
+  SiRedis,
+  SiPostman,
+} from 'react-icons/si';
+import { FaJava } from 'react-icons/fa6';
+import { TbBrandVscode } from 'react-icons/tb';
 
 const TechStackSection = () => {
   const techCategories = [
@@ -9,49 +31,49 @@ const TechStackSection = () => {
       icon: Code2,
       color: 'from-blue-500 to-cyan-500',
       technologies: [
-        { name: 'React', icon: '⚛️' },
-        { name: 'Next.js', icon: '▲' },
-        { name: 'TypeScript', icon: '🔷' },
-        { name: 'JavaScript', icon: '⚡' },
-        { name: 'Tailwind CSS', icon: '💨' }
-      ]
+        { name: 'React', Icon: SiReact, color: '#61DAFB' },
+        { name: 'Next.js', Icon: SiNextdotjs, themed: true },
+        { name: 'TypeScript', Icon: SiTypescript, color: '#3178C6' },
+        { name: 'JavaScript', Icon: SiJavascript, color: '#F7DF1E' },
+        { name: 'Tailwind CSS', Icon: SiTailwindcss, color: '#06B6D4' },
+      ],
     },
     {
       category: 'Backend',
       icon: Server,
       color: 'from-emerald-500 to-teal-500',
       technologies: [
-        { name: 'Java', icon: '☕' },
-        { name: 'Spring Boot', icon: '🌱' },
-        { name: 'Node.js', icon: '🟢' },
-        { name: 'Express', icon: '🚂' },
-        { name: 'FastAPI', icon: '🚀' }
-      ]
+        { name: 'Java', Icon: FaJava, color: '#E76F00' },
+        { name: 'Spring Boot', Icon: SiSpringboot, color: '#6DB33F' },
+        { name: 'Node.js', Icon: SiNodedotjs, color: '#5FA04E' },
+        { name: 'Express', Icon: SiExpress, themed: true },
+        { name: 'FastAPI', Icon: SiFastapi, color: '#009688' },
+      ],
     },
     {
       category: 'Databases',
       icon: Database,
       color: 'from-purple-500 to-pink-500',
       technologies: [
-        { name: 'PostgreSQL', icon: '🐘' },
-        { name: 'MySQL', icon: '🐬' },
-        { name: 'MongoDB', icon: '🍃' },
-        { name: 'Cloud Firestore', icon: '🔥' }
-      ]
+        { name: 'PostgreSQL', Icon: SiPostgresql, color: '#4169E1' },
+        { name: 'MySQL', Icon: SiMysql, color: '#4479A1' },
+        { name: 'MongoDB', Icon: SiMongodb, color: '#47A248' },
+        { name: 'Cloud Firestore', Icon: SiFirebase, color: '#F57C00' },
+      ],
     },
     {
       category: 'Tools & Platforms',
       icon: Wrench,
       color: 'from-orange-500 to-red-500',
       technologies: [
-        { name: 'Git', icon: '📦' },
-        { name: 'GitHub', icon: '🐙' },
-        { name: 'Docker', icon: '🐳' },
-        { name: 'Redis', icon: '🧱' },
-        { name: 'Postman', icon: '📮' },
-        { name: 'VS Code', icon: '💻' }
-      ]
-    }
+        { name: 'Git', Icon: SiGit, color: '#F05032' },
+        { name: 'GitHub', Icon: SiGithub, themed: true },
+        { name: 'Docker', Icon: SiDocker, color: '#2496ED' },
+        { name: 'Redis', Icon: SiRedis, color: '#FF4438' },
+        { name: 'Postman', Icon: SiPostman, color: '#FF6C37' },
+        { name: 'VS Code', Icon: TbBrandVscode, color: '#007ACC' },
+      ],
+    },
   ];
 
   return (
@@ -102,9 +124,13 @@ const TechStackSection = () => {
                     whileHover={{ scale: 1.05, x: 5 }}
                     className="flex items-center gap-3 p-3 rounded-lg bg-background/50 border border-border/50 hover:border-primary/50 hover:shadow-lg transition-all duration-300 cursor-pointer group"
                   >
-                    <span className="text-2xl group-hover:scale-125 transition-transform duration-300">
-                      {tech.icon}
-                    </span>
+                    <tech.Icon
+                      className={`w-7 h-7 flex-shrink-0 transition-transform duration-300 group-hover:scale-125 ${
+                        tech.themed ? 'text-foreground' : ''
+                      }`}
+                      style={tech.themed ? undefined : { color: tech.color }}
+                      aria-hidden="true"
+                    />
                     <span className="font-medium text-foreground group-hover:text-primary transition-colors">
                       {tech.name}
                     </span>
