@@ -115,8 +115,8 @@ const TechStackSection = () => {
               className="bg-card border border-border rounded-2xl p-6 hover:border-primary/40 transition-colors duration-300"
             >
               <div className="flex items-center gap-3 mb-6">
-                <div className={`p-3 rounded-lg bg-gradient-to-br ${category.color}`}>
-                  <category.icon className="w-6 h-6 text-white" />
+                <div className="p-3 rounded-lg bg-primary/10 border border-primary/20">
+                  <category.icon className="w-6 h-6 text-primary" />
                 </div>
                 <h3 className="text-xl font-bold text-foreground">
                   {category.category}

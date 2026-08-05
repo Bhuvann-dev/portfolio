@@ -114,7 +114,7 @@ const CertificationsSection = () => {
                     View
                   </span>
                 </div>
-                <span className={`absolute top-2 left-2 p-1.5 rounded-md bg-gradient-to-br ${cert.accent}`}>
+                <span className="absolute top-2 left-2 p-1.5 rounded-md bg-primary border border-primary/50 shadow-lg shadow-primary/30">
                   <Award className="w-4 h-4 text-white" />
                 </span>
               </div>
