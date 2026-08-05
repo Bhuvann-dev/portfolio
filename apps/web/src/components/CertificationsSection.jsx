@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Award, X, Download, Maximize2 } from 'lucide-react';
+import SectionHeading from '@/components/SectionHeading';
 
 const certifications = [
   {
@@ -79,20 +80,11 @@ const CertificationsSection = () => {
   return (
     <section id="certifications" className="py-20 bg-muted/20 relative overflow-hidden">
       <div className="container mx-auto px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-            Certifications
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Courses and programs I've completed on my path into software — click any to view
-          </p>
-        </motion.div>
+        <SectionHeading
+          eyebrow="credentials"
+          title="Certifications"
+          subtitle="Courses and programs I've completed on my path into software — click any to view"
+        />
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
           {certifications.map((cert, index) => (

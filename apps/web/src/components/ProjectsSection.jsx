@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FileSearch, Building2, GitPullRequest, Users, ChevronLeft, ChevronRight, X } from 'lucide-react';
 import ProjectCard from '@/components/ProjectCard';
+import SectionHeading from '@/components/SectionHeading';
 
 const projects = [
   {
@@ -119,20 +120,11 @@ const ProjectsSection = () => {
   return (
     <section id="projects" className="py-20 bg-background relative overflow-hidden">
       <div className="container mx-auto px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-            Featured Projects
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            A showcase of my recent work — click a screenshot to open the gallery
-          </p>
-        </motion.div>
+        <SectionHeading
+          eyebrow="projects"
+          title="Featured Projects"
+          subtitle="A showcase of my recent work — click a screenshot to open the gallery"
+        />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, index) => (

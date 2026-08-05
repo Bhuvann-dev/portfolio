@@ -23,6 +23,7 @@ import {
 } from 'react-icons/si';
 import { FaJava } from 'react-icons/fa6';
 import { TbBrandVscode } from 'react-icons/tb';
+import SectionHeading from '@/components/SectionHeading';
 
 const TechStackSection = () => {
   const techCategories = [
@@ -79,20 +80,11 @@ const TechStackSection = () => {
   return (
     <section className="py-20 bg-muted/30 relative overflow-hidden">
       <div className="container mx-auto px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-            Tech Stack
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Technologies and tools I use to bring ideas to life
-          </p>
-        </motion.div>
+        <SectionHeading
+          eyebrow="stack"
+          title="Tech Stack"
+          subtitle="Technologies and tools I use to bring ideas to life"
+        />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {techCategories.map((category, categoryIndex) => (

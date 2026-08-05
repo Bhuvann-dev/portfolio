@@ -6,6 +6,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
+import SectionHeading from '@/components/SectionHeading';
 
 // Contact configuration
 const CONTACT_EMAIL = 'bhuvann67@gmail.com';
@@ -125,20 +126,11 @@ const ContactSection = () => {
   return (
     <section id="contact" className="py-20 bg-background relative overflow-hidden">
       <div className="container mx-auto px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-            Get In Touch
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-4">
-            Want to know more? Let's connect!
-          </p>
-        </motion.div>
+        <SectionHeading
+          eyebrow="contact"
+          title="Get In Touch"
+          subtitle="Want to know more? Let's connect!"
+        />
 
         <div className="max-w-4xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">

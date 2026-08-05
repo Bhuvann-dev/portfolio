@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { GraduationCap, Briefcase } from 'lucide-react';
+import SectionHeading from '@/components/SectionHeading';
 
 const ExperienceSection = () => {
   const experiences = [
@@ -63,20 +64,11 @@ const ExperienceSection = () => {
   return (
     <section id="experience" className="py-20 bg-muted/30 relative overflow-hidden">
       <div className="container mx-auto px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-            Experience & Education
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            My journey in technology and continuous learning
-          </p>
-        </motion.div>
+        <SectionHeading
+          eyebrow="journey"
+          title="Experience & Education"
+          subtitle="My journey in technology and continuous learning"
+        />
 
         <div className="max-w-4xl mx-auto relative">
           {/* Timeline Line */}

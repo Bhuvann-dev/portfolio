@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Code2, Server, Database, TrendingUp, Award, Zap } from 'lucide-react';
+import SectionHeading from '@/components/SectionHeading';
 
 const AboutSection = () => {
   const [stats, setStats] = useState({
@@ -65,22 +66,11 @@ const AboutSection = () => {
   return (
     <section id="about" className="py-20 bg-background relative overflow-hidden">
       <div className="container mx-auto px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-            About Me
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            I'm a Full Stack Developer who builds complete web applications end to end — from database
-            and REST APIs through to polished React interfaces. I came into software from a technical-art
-            background, and that mix of problem-solving and craft shapes everything I build.
-          </p>
-        </motion.div>
+        <SectionHeading
+          eyebrow="about me"
+          title="About Me"
+          subtitle="I'm a Full Stack Developer who builds complete web applications end to end — from database and REST APIs through to polished React interfaces. I came into software from a technical-art background, and that mix of problem-solving and craft shapes everything I build."
+        />
 
         {/* Stats Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">

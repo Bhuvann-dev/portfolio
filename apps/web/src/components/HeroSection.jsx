@@ -8,127 +8,103 @@ const HeroSection = () => {
     document.querySelector('#projects')?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  const handleDownloadResume = () => {
-    // Placeholder for resume download
-    window.open('#', '_blank');
+  const container = {
+    hidden: {},
+    show: { transition: { staggerChildren: 0.12, delayChildren: 0.1 } },
+  };
+  const item = {
+    hidden: { opacity: 0, y: 24 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] } },
   };
 
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      className="relative min-h-screen flex items-center overflow-hidden bg-background"
     >
-      {/* Background Image with Overlay */}
-      <div className="absolute inset-0 z-0">
-        <img
-          src="https://images.unsplash.com/photo-1687006067259-6de13ca3875e"
-          alt="Developer workspace background"
-          className="w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-br from-background/95 via-background/90 to-background/95" />
-      </div>
+      {/* Radial accent glow */}
+      <div className="accent-glow absolute inset-0 -z-10" />
 
-      {/* Animated Grid Pattern */}
-      <div className="absolute inset-0 z-0 opacity-20">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `linear-gradient(hsl(var(--primary) / 0.1) 1px, transparent 1px),
-                           linear-gradient(90deg, hsl(var(--primary) / 0.1) 1px, transparent 1px)`,
-          backgroundSize: '50px 50px',
-          animation: 'gridMove 20s linear infinite'
-        }} />
-      </div>
+      {/* Faint grid, faded toward edges */}
+      <div
+        className="absolute inset-0 -z-10 opacity-[0.35]"
+        style={{
+          backgroundImage:
+            'linear-gradient(hsl(var(--foreground) / 0.05) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--foreground) / 0.05) 1px, transparent 1px)',
+          backgroundSize: '56px 56px',
+          maskImage: 'radial-gradient(ellipse 70% 60% at 50% 40%, #000 40%, transparent 100%)',
+          WebkitMaskImage: 'radial-gradient(ellipse 70% 60% at 50% 40%, #000 40%, transparent 100%)',
+        }}
+      />
 
-      {/* Content */}
-      <div className="container mx-auto px-4 z-10 pt-20">
-        <div className="max-w-4xl mx-auto text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+      <div className="container mx-auto px-4 pt-24">
+        <motion.div
+          variants={container}
+          initial="hidden"
+          animate="show"
+          className="max-w-4xl"
+        >
+          <motion.p variants={item} className="eyebrow mb-6">
+            <span className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
+            </span>
+            Full Stack Developer · Bangalore, India
+          </motion.p>
+
+          <motion.h1
+            variants={item}
+            className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold leading-[1.03] tracking-tight mb-6"
           >
-            <motion.h1
-              className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent"
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-            >
-              Hi, I'm Bhuvan N
-            </motion.h1>
+            Hi, I'm <span className="text-primary">Bhuvan N</span>.
+            <br />
+            I build <span className="text-primary">scalable</span> web apps.
+          </motion.h1>
 
-            <motion.h2
-              className="text-2xl md:text-3xl font-semibold text-foreground mb-6"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-            >
-              Full Stack Developer | Building Scalable & Modern Web Applications
-            </motion.h2>
+          <motion.p
+            variants={item}
+            className="text-lg md:text-xl text-muted-foreground max-w-2xl mb-10 leading-relaxed"
+          >
+            I work across the whole stack — React &amp; Next.js on the front, Java/Spring Boot,
+            Node and FastAPI on the back — turning ideas into clean, reliable products from database
+            through to interface.
+          </motion.p>
 
-            <motion.p
-              className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
+          <motion.div variants={item} className="flex flex-col sm:flex-row gap-4">
+            <Button
+              size="lg"
+              onClick={scrollToProjects}
+              className="gap-2 text-base px-7 py-6 shadow-lg shadow-primary/20 hover:shadow-primary/40 transition-shadow"
             >
-              Passionate about creating elegant solutions to complex problems. I specialize in building
-              responsive, user-friendly web applications using modern technologies and best practices.
-              Let's turn your ideas into reality with clean, efficient code.
-            </motion.p>
+              View Projects
+              <ArrowRight className="w-5 h-5" />
+            </Button>
 
-            <motion.div
-              className="flex flex-col sm:flex-row gap-4 justify-center"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.8 }}
-            >
+            <a href="/Bhuvan-N-Resume.pdf" download>
               <Button
                 size="lg"
-                onClick={scrollToProjects}
-                className="gap-2 text-lg px-8 py-6 shadow-lg hover:shadow-xl transition-all"
-              >
-                View Projects
-                <ArrowRight className="w-5 h-5" />
-              </Button>
-
-              <a href="/Bhuvan-N-Resume.pdf" download>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="gap-2 text-lg px-8 py-6 border-2 hover:bg-primary/10"
-                >
-                  <Download className="w-5 h-5" />
-                  Download Resume
-                </Button>
-            </a>
-              {/* <Button
-                size="lg"
                 variant="outline"
-                onClick={handleDownloadResume}
-                className="gap-2 text-lg px-8 py-6 border-2 hover:bg-primary/10"
+                className="gap-2 text-base px-7 py-6 border-2 hover:bg-primary/10 hover:border-primary"
               >
                 <Download className="w-5 h-5" />
                 Download Resume
-              </Button> */}
-            </motion.div>
+              </Button>
+            </a>
           </motion.div>
-        </div>
+        </motion.div>
       </div>
 
-      {/* Scroll Indicator */}
-      <motion.div
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, delay: 1.2, repeat: Infinity, repeatType: 'reverse' }}
+      {/* Scroll hint */}
+      <motion.button
+        onClick={scrollToProjects}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.2, duration: 0.8 }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 font-mono text-xs uppercase tracking-[0.25em] text-muted-foreground hover:text-primary transition-colors"
+        aria-label="Scroll to projects"
       >
-        <div className="w-6 h-10 border-2 border-primary rounded-full flex items-start justify-center p-2">
-          <motion.div
-            className="w-1.5 h-1.5 bg-primary rounded-full"
-            animate={{ y: [0, 12, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity }}
-          />
-        </div>
-      </motion.div>
+        scroll ↓
+      </motion.button>
     </section>
   );
 };
