@@ -9,11 +9,11 @@ const TechStackSection = () => {
       icon: Code2,
       color: 'from-blue-500 to-cyan-500',
       technologies: [
-        { name: 'HTML', icon: '🌐' },
-        { name: 'CSS', icon: '🎨' },
-        { name: 'JavaScript', icon: '⚡' },
         { name: 'React', icon: '⚛️' },
-        { name: 'Tailwind', icon: '💨' }
+        { name: 'Next.js', icon: '▲' },
+        { name: 'TypeScript', icon: '🔷' },
+        { name: 'JavaScript', icon: '⚡' },
+        { name: 'Tailwind CSS', icon: '💨' }
       ]
     },
     {
@@ -21,9 +21,11 @@ const TechStackSection = () => {
       icon: Server,
       color: 'from-emerald-500 to-teal-500',
       technologies: [
+        { name: 'Java', icon: '☕' },
+        { name: 'Spring Boot', icon: '🌱' },
         { name: 'Node.js', icon: '🟢' },
         { name: 'Express', icon: '🚂' },
-        { name: 'REST APIs', icon: '🔌' }
+        { name: 'FastAPI', icon: '🚀' }
       ]
     },
     {
@@ -31,18 +33,22 @@ const TechStackSection = () => {
       icon: Database,
       color: 'from-purple-500 to-pink-500',
       technologies: [
+        { name: 'PostgreSQL', icon: '🐘' },
+        { name: 'MySQL', icon: '🐬' },
         { name: 'MongoDB', icon: '🍃' },
-        { name: 'MySQL', icon: '🐬' }
+        { name: 'Cloud Firestore', icon: '🔥' }
       ]
     },
     {
-      category: 'Tools',
+      category: 'Tools & Platforms',
       icon: Wrench,
       color: 'from-orange-500 to-red-500',
       technologies: [
         { name: 'Git', icon: '📦' },
         { name: 'GitHub', icon: '🐙' },
-        { name: 'Figma', icon: '🎯' },
+        { name: 'Docker', icon: '🐳' },
+        { name: 'Redis', icon: '🧱' },
+        { name: 'Postman', icon: '📮' },
         { name: 'VS Code', icon: '💻' }
       ]
     }

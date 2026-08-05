@@ -1,49 +1,54 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { FileSearch, Building2, GitPullRequest, Users } from 'lucide-react';
 import ProjectCard from '@/components/ProjectCard';
 
 const ProjectsSection = () => {
   const projects = [
     {
-      title: 'E-Commerce Platform',
-      description: 'A full-featured online shopping platform with cart management, payment integration, and admin dashboard for product management.',
-      image: 'https://images.unsplash.com/photo-1701698942908-48b9e22c8e12',
-      techStack: ['React', 'Node.js', 'MongoDB', 'Tailwind'],
-      liveUrl: '#',
-      githubUrl: '#'
+      title: 'ResumeIQ — AI Resume Analyzer',
+      description:
+        'Upload a resume, get an ATS-readiness score with concrete fixes, and download an interview-ready version in under two minutes. AI feedback is categorized Critical / Warning / Suggestion, and weak bullets are rewritten using only your real facts.',
+      icon: FileSearch,
+      gradient: 'from-emerald-500/80 to-teal-600/80',
+      techStack: ['Next.js', 'TypeScript', 'FastAPI', 'PostgreSQL', 'Redis + Celery', 'OpenAI'],
+      liveUrl: null,
+      githubUrl: 'https://github.com/Bhuvann-dev/ResumeIQ',
+      status: 'In Development',
     },
     {
-      title: 'Task Management App',
-      description: 'Collaborative task management tool with real-time updates, team collaboration features, and progress tracking.',
-      image: 'https://images.unsplash.com/photo-1593720219276-0b1eacd0aef4',
-      techStack: ['React', 'Express', 'MySQL', 'CSS'],
-      liveUrl: '#',
-      githubUrl: '#'
+      title: 'PG Manager — Rent & Tenant Platform',
+      description:
+        'A private, phone-friendly control panel for paying-guest and hostel owners: rooms and bed occupancy, per-tenant rent ledgers, secure ID storage, Excel bulk-import, and one-tap WhatsApp reminders. Multi-owner data isolation enforced by Firestore security rules.',
+      icon: Building2,
+      gradient: 'from-amber-500/80 to-orange-600/80',
+      techStack: ['Next.js 16', 'React 19', 'Tailwind v4', 'Firebase', 'Cloud Firestore'],
+      liveUrl: 'https://pg-manager-nu.vercel.app/',
+      githubUrl: 'https://github.com/Bhuvann-dev/pg-manager',
+      status: 'Live',
     },
     {
-      title: 'Weather Dashboard',
-      description: 'Real-time weather application with location-based forecasts, interactive maps, and detailed weather analytics.',
-      image: 'https://images.unsplash.com/photo-1650234083177-871b96b6c575',
-      techStack: ['React', 'REST APIs', 'Tailwind'],
-      liveUrl: '#',
-      githubUrl: '#'
+      title: 'GitHub Code Review Agent',
+      description:
+        'An AI-assisted CLI that reviews a public GitHub pull request — reads the changed TypeScript, and returns structured, evidence-based findings so reviewers can build context on a diff faster. Built around a pre-registered fixture set to measure precision honestly.',
+      icon: GitPullRequest,
+      gradient: 'from-violet-500/80 to-purple-600/80',
+      techStack: ['TypeScript', 'Node.js', 'AI / LLM', 'CLI'],
+      liveUrl: null,
+      githubUrl: null,
+      status: 'In Progress',
     },
     {
-      title: 'Portfolio CMS',
-      description: 'Content management system for portfolio websites with drag-and-drop builder and customizable templates.',
-      image: 'https://images.unsplash.com/photo-1701698942908-48b9e22c8e12',
-      techStack: ['React', 'Node.js', 'MongoDB'],
-      liveUrl: '#',
-      githubUrl: '#'
+      title: 'BuildHub — Beginner-Friendly Teams',
+      description:
+        'A welcoming way for newcomers to find a project worth joining, meet kind teammates, and turn small contributions into a portfolio they are proud to share. Frontend experience focused on approachable, non-intimidating collaboration.',
+      icon: Users,
+      gradient: 'from-sky-500/80 to-blue-600/80',
+      techStack: ['HTML5', 'CSS3', 'JavaScript'],
+      liveUrl: null,
+      githubUrl: null,
+      status: 'Frontend Prototype',
     },
-    {
-      title: 'Social Media Dashboard',
-      description: 'Analytics dashboard for social media metrics with data visualization, trend analysis, and reporting features.',
-      image: 'https://images.unsplash.com/photo-1593720219276-0b1eacd0aef4',
-      techStack: ['React', 'Express', 'MySQL', 'Tailwind'],
-      liveUrl: '#',
-      githubUrl: '#'
-    }
   ];
 
   return (

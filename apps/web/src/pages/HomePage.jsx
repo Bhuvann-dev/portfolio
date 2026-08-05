@@ -6,6 +6,7 @@ import HeroSection from '@/components/HeroSection';
 import AboutSection from '@/components/AboutSection';
 import TechStackSection from '@/components/TechStackSection';
 import ProjectsSection from '@/components/ProjectsSection';
+import CertificationsSection from '@/components/CertificationsSection';
 import ExperienceSection from '@/components/ExperienceSection';
 import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
@@ -59,6 +60,7 @@ const HomePage = () => {
           <AboutSection />
           <TechStackSection />
           <ProjectsSection />
+          <CertificationsSection />
           <ExperienceSection />
           <ContactSection />
         </main>

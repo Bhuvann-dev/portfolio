@@ -7,6 +7,14 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
 
+// Contact configuration
+const CONTACT_EMAIL = 'bhuvann67@gmail.com';
+// After creating a form at https://formspree.io, paste its ID here (e.g. 'xldeqvwk').
+// Until then, the form gracefully falls back to opening the visitor's email client.
+const FORMSPREE_FORM_ID = 'YOUR_FORMSPREE_ID';
+const isFormspreeConfigured =
+  FORMSPREE_FORM_ID && FORMSPREE_FORM_ID !== 'YOUR_FORMSPREE_ID';
+
 const ContactSection = () => {
   const { toast } = useToast();
   const [formData, setFormData] = useState({
@@ -23,9 +31,17 @@ const ContactSection = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const openMailFallback = () => {
+    const subject = encodeURIComponent(`Portfolio contact from ${formData.name}`);
+    const body = encodeURIComponent(
+      `Name: ${formData.name}\nEmail: ${formData.email}\n\n${formData.message}`
+    );
+    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     // Validation
     if (!formData.name || !formData.email || !formData.message) {
       toast({
@@ -45,44 +61,63 @@ const ContactSection = () => {
       return;
     }
 
+    // Fallback: no Formspree configured yet — open the visitor's email client.
+    if (!isFormspreeConfigured) {
+      openMailFallback();
+      toast({
+        title: 'Opening your email app…',
+        description: 'Your message was pre-filled. Just hit send!'
+      });
+      return;
+    }
+
     setIsSubmitting(true);
 
-    // Simulate submission and store in localStorage
-    setTimeout(() => {
-      const submissions = JSON.parse(localStorage.getItem('contactSubmissions') || '[]');
-      submissions.push({
-        ...formData,
-        timestamp: new Date().toISOString()
+    try {
+      const response = await fetch(`https://formspree.io/f/${FORMSPREE_FORM_ID}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify(formData)
       });
-      localStorage.setItem('contactSubmissions', JSON.stringify(submissions));
 
+      if (response.ok) {
+        toast({
+          title: 'Success!',
+          description: "Your message has been sent. I'll get back to you soon!"
+        });
+        setFormData({ name: '', email: '', message: '' });
+      } else {
+        throw new Error('Formspree request failed');
+      }
+    } catch (error) {
       toast({
-        title: 'Success!',
-        description: 'Your message has been sent successfully. I\'ll get back to you soon!',
+        title: "Couldn't send via the form",
+        description: 'Opening your email app instead…',
+        variant: 'destructive'
       });
-
-      setFormData({ name: '', email: '', message: '' });
+      openMailFallback();
+    } finally {
       setIsSubmitting(false);
-    }, 1000);
+    }
   };
 
   const socialLinks = [
     {
       name: 'GitHub',
       icon: Github,
-      url: 'https://github.com',
+      url: 'https://github.com/Bhuvann-dev',
       color: 'hover:text-gray-900 dark:hover:text-white'
     },
     {
       name: 'LinkedIn',
       icon: Linkedin,
-      url: 'https://linkedin.com',
+      url: 'https://www.linkedin.com/in/bhuvan-n-1aa886425/',
       color: 'hover:text-blue-600'
     },
     {
       name: 'Email',
       icon: Mail,
-      url: 'mailto:bhuvan@example.com',
+      url: `mailto:${CONTACT_EMAIL}`,
       color: 'hover:text-red-500'
     }
   ];

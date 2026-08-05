@@ -17,12 +17,12 @@ const Footer = () => {
   {
     name: "LinkedIn",
     icon: Linkedin,
-    url: "https://www.linkedin.com/in/bhuvan-n-dev/",
+    url: "https://www.linkedin.com/in/bhuvan-n-1aa886425/",
   },
   {
     name: "Email",
     icon: Mail,
-    url: "mailto:bhuvan104@gmail.com?subject=Portfolio%20Contact",
+    url: "mailto:bhuvann67@gmail.com?subject=Portfolio%20Contact",
   },
 ];
 

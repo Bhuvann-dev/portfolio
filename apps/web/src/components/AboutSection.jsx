@@ -10,7 +10,7 @@ const AboutSection = () => {
   });
 
   useEffect(() => {
-    const targetStats = { years: 3, projects: 15, technologies: 20 };
+    const targetStats = { years: 3, projects: 5, technologies: 20 };
     const duration = 2000;
     const steps = 60;
     const interval = duration / steps;
@@ -39,19 +39,19 @@ const AboutSection = () => {
     {
       icon: Code2,
       title: 'Frontend Development',
-      skills: ['HTML', 'CSS', 'JavaScript', 'React'],
+      skills: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS'],
       color: 'from-blue-500 to-cyan-500'
     },
     {
       icon: Server,
       title: 'Backend Development',
-      skills: ['Node.js', 'Express', 'REST APIs'],
+      skills: ['Java', 'Spring Boot', 'Node.js', 'FastAPI'],
       color: 'from-emerald-500 to-teal-500'
     },
     {
       icon: Database,
-      title: 'Database Management',
-      skills: ['MongoDB', 'MySQL'],
+      title: 'Databases & DevOps',
+      skills: ['PostgreSQL', 'MongoDB', 'Firestore', 'Docker'],
       color: 'from-purple-500 to-pink-500'
     }
   ];
@@ -76,8 +76,9 @@ const AboutSection = () => {
             About Me
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            I'm a dedicated Full Stack Developer with a passion for creating innovative web solutions.
-            My journey in web development has equipped me with a diverse skill set and a problem-solving mindset.
+            I'm a Full Stack Developer who builds complete web applications end to end — from database
+            and REST APIs through to polished React interfaces. I came into software from a technical-art
+            background, and that mix of problem-solving and craft shapes everything I build.
           </p>
         </motion.div>
 
