@@ -12,7 +12,6 @@ const ExperienceSection = () => {
       institution: 'KodNest, Bangalore',
       date: 'Dec 2025 – Jun 2026',
       description: 'Intensive Java & Python full-stack program — data structures & algorithms, Spring Boot REST APIs, SQL, and building complete web applications end to end.',
-      color: 'from-blue-500 to-cyan-500'
     },
     {
       type: 'work',
@@ -21,7 +20,6 @@ const ExperienceSection = () => {
       institution: 'Self-Employed, Bangalore',
       date: 'Feb 2025 – Nov 2025',
       description: 'Delivered 3D asset and AR visualization work for client projects while self-studying software engineering and full-stack web development.',
-      color: 'from-emerald-500 to-teal-500'
     },
     {
       type: 'work',
@@ -30,7 +28,6 @@ const ExperienceSection = () => {
       institution: 'Technicolor Academy, Hyderabad',
       date: 'Jun 2024 – Jan 2025',
       description: 'Built procedural tools and automation in Houdini using VEX scripting; debugged complex node networks and created reusable, non-destructive pipelines.',
-      color: 'from-violet-500 to-purple-500'
     },
     {
       type: 'work',
@@ -39,7 +36,6 @@ const ExperienceSection = () => {
       institution: 'CharpstAR',
       date: 'Apr 2024 – Jun 2024',
       description: 'Tested augmented-reality experiences across devices, documented defects against acceptance criteria, and verified fixes with the development team.',
-      color: 'from-amber-500 to-orange-500'
     },
     {
       type: 'education',
@@ -48,7 +44,6 @@ const ExperienceSection = () => {
       institution: 'Reva University, Bangalore',
       date: '2021 – 2024',
       description: 'Undergraduate degree in computer science — the foundation in programming, data structures, and software fundamentals.',
-      color: 'from-sky-500 to-blue-500'
     },
     {
       type: 'education',
@@ -57,8 +52,7 @@ const ExperienceSection = () => {
       institution: "Alva's PU College, Vidyagiri",
       date: '2019 – 2021',
       description: 'Completed pre-university education before pursuing computer science at university.',
-      color: 'from-pink-500 to-rose-500'
-    }
+    },
   ];
 
   return (
@@ -67,62 +61,49 @@ const ExperienceSection = () => {
         <SectionHeading
           eyebrow="journey"
           title="Experience & Education"
-          subtitle="My journey in technology and continuous learning"
+          subtitle="My path into software — roles, training, and study"
         />
 
-        <div className="max-w-4xl mx-auto relative">
-          {/* Timeline Line */}
-          <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-gradient-to-b from-primary via-secondary to-primary" />
+        <div className="max-w-3xl mx-auto">
+          {experiences.map((exp, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, x: -16 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.06 }}
+              className="flex gap-4 md:gap-6"
+            >
+              {/* Rail: node + connector */}
+              <div className="flex flex-col items-center">
+                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-card border-2 border-primary/60 shrink-0">
+                  <exp.icon className="w-4 h-4 text-primary" />
+                </span>
+                {index < experiences.length - 1 && (
+                  <span className="w-px grow bg-border my-1" />
+                )}
+              </div>
 
-          <div className="space-y-12">
-            {experiences.map((exp, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className={`flex flex-col md:flex-row gap-8 items-center ${
-                  index % 2 === 0 ? 'md:flex-row-reverse' : ''
-                }`}
-              >
-                {/* Content Card */}
-                <div className="flex-1 w-full">
-                  <div className="bg-card border border-border rounded-2xl p-6 hover:border-primary/40 transition-colors duration-300 group">
-                    <div className="flex items-start gap-4">
-                      <div className={`p-3 rounded-lg bg-gradient-to-br ${exp.color} flex-shrink-0`}>
-                        <exp.icon className="w-6 h-6 text-white" />
-                      </div>
-                      <div className="flex-1">
-                        <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-2">
-                          <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors">
-                            {exp.title}
-                          </h3>
-                          <span className="text-sm text-muted-foreground font-medium">
-                            {exp.date}
-                          </span>
-                        </div>
-                        <p className="text-primary font-medium mb-3">
-                          {exp.institution}
-                        </p>
-                        <p className="text-muted-foreground">
-                          {exp.description}
-                        </p>
-                      </div>
-                    </div>
+              {/* Content card */}
+              <div className="flex-1 pb-8">
+                <div className="bg-card border border-border rounded-2xl p-5 hover:border-primary/40 transition-colors duration-300 group">
+                  <div className="flex flex-wrap items-center gap-3 mb-2">
+                    <span className="font-mono text-xs uppercase tracking-widest text-primary">
+                      {exp.date}
+                    </span>
+                    <span className="font-mono text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-md border border-border text-muted-foreground">
+                      {exp.type === 'work' ? 'Work' : 'Education'}
+                    </span>
                   </div>
+                  <h3 className="font-display text-lg md:text-xl font-bold text-foreground group-hover:text-primary transition-colors">
+                    {exp.title}
+                  </h3>
+                  <p className="text-primary font-medium text-sm mb-2.5">{exp.institution}</p>
+                  <p className="text-muted-foreground text-sm leading-relaxed">{exp.description}</p>
                 </div>
-
-                {/* Timeline Dot */}
-                <div className="hidden md:block relative">
-                  <div className="w-4 h-4 rounded-full bg-primary border-4 border-background shadow-lg" />
-                </div>
-
-                {/* Spacer for alternating layout */}
-                <div className="hidden md:block flex-1" />
-              </motion.div>
-            ))}
-          </div>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
