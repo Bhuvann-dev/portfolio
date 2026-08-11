@@ -64,9 +64,9 @@ const projects = [
     icon: Users,
     gradient: 'from-sky-500/80 to-blue-600/80',
     techStack: ['HTML5', 'CSS3', 'JavaScript'],
-    liveUrl: null,
+    liveUrl: 'https://buildhub-frontend-ten.vercel.app',
     githubUrl: null,
-    status: 'Frontend Prototype',
+    status: 'Live',
     screenshots: [
       '/projects/buildhub/1.png',
       '/projects/buildhub/2.png',
