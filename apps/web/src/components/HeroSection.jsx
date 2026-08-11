@@ -1,5 +1,5 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, Download } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
@@ -8,6 +8,13 @@ const HeroSection = () => {
     document.querySelector('#projects')?.scrollIntoView({ behavior: 'smooth' });
   };
 
+  // Alternate the right-side visual between the code card and the avatar
+  const [showAvatar, setShowAvatar] = useState(false);
+  useEffect(() => {
+    const t = setInterval(() => setShowAvatar((v) => !v), 6500);
+    return () => clearInterval(t);
+  }, []);
+
   const container = {
     hidden: {},
     show: { transition: { staggerChildren: 0.12, delayChildren: 0.1 } },
@@ -15,6 +22,12 @@ const HeroSection = () => {
   const item = {
     hidden: { opacity: 0, y: 24 },
     show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] } },
+  };
+  const swap = {
+    initial: { opacity: 0, scale: 0.96, y: 12 },
+    animate: { opacity: 1, scale: 1, y: 0 },
+    exit: { opacity: 0, scale: 0.96, y: -12 },
+    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
   };
 
   // syntax token colors (kept within the violet + neutral palette)
@@ -104,49 +117,63 @@ const HeroSection = () => {
             </motion.div>
           </motion.div>
 
-          {/* Right: terminal / code card */}
+          {/* Right: alternating terminal card / avatar */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
-            className="hidden lg:block relative"
+            className="hidden lg:flex relative items-center justify-center min-h-[32rem]"
           >
-            <motion.div
-              animate={{ y: [0, -10, 0] }}
-              transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' }}
-              className="relative"
-            >
-              {/* glow behind the card */}
-              <div className="absolute -inset-6 bg-primary/20 blur-3xl rounded-full -z-10" />
+            {/* soft glow behind whichever card is shown */}
+            <div className="absolute inset-0 -z-10 flex items-center justify-center">
+              <div className="w-[24rem] h-[24rem] bg-primary/20 blur-[90px] rounded-full" />
+            </div>
 
-              <div className="rounded-xl border border-border bg-card/95 overflow-hidden shadow-2xl">
-                {/* title bar */}
-                <div className="flex items-center gap-2 px-4 py-3 border-b border-border bg-muted/50">
-                  <span className="w-3 h-3 rounded-full bg-red-500/80" />
-                  <span className="w-3 h-3 rounded-full bg-yellow-500/80" />
-                  <span className="w-3 h-3 rounded-full bg-green-500/80" />
-                  <span className="ml-3 font-mono text-xs text-muted-foreground">developer.ts</span>
-                </div>
+            <AnimatePresence mode="wait">
+              {showAvatar ? (
+                <motion.img
+                  key="avatar"
+                  src="/hero-avatar.webp"
+                  alt="Bhuvan N — 3D avatar"
+                  {...swap}
+                  className="max-h-[32rem] w-auto object-contain drop-shadow-2xl"
+                />
+              ) : (
+                <motion.div key="terminal" {...swap} className="w-full">
+                  <motion.div
+                    animate={{ y: [0, -10, 0] }}
+                    transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' }}
+                    className="rounded-xl border border-border bg-card/95 overflow-hidden shadow-2xl"
+                  >
+                    {/* title bar */}
+                    <div className="flex items-center gap-2 px-4 py-3 border-b border-border bg-muted/50">
+                      <span className="w-3 h-3 rounded-full bg-red-500/80" />
+                      <span className="w-3 h-3 rounded-full bg-yellow-500/80" />
+                      <span className="w-3 h-3 rounded-full bg-green-500/80" />
+                      <span className="ml-3 font-mono text-xs text-muted-foreground">developer.ts</span>
+                    </div>
 
-                {/* code */}
-                <div className="p-5 font-mono text-[13px] leading-7 overflow-x-auto">
-                  <div><span className={kw}>const</span> <span className="text-foreground">developer</span> <span className={pun}>= {'{'}</span></div>
-                  <div className="pl-4"><span className={key}>name</span><span className={pun}>:</span> <span className={str}>"Bhuvan N"</span><span className={pun}>,</span></div>
-                  <div className="pl-4"><span className={key}>role</span><span className={pun}>:</span> <span className={str}>"Full Stack Developer"</span><span className={pun}>,</span></div>
-                  <div className="pl-4"><span className={key}>stack</span><span className={pun}>:</span> <span className={pun}>[</span><span className={str}>"React"</span><span className={pun}>,</span> <span className={str}>"Next.js"</span><span className={pun}>,</span> <span className={str}>"Java"</span><span className={pun}>,</span></div>
-                  <div className="pl-[4.5rem]"><span className={str}>"Spring Boot"</span><span className={pun}>,</span> <span className={str}>"FastAPI"</span><span className={pun}>],</span></div>
-                  <div className="pl-4"><span className={key}>location</span><span className={pun}>:</span> <span className={str}>"Bangalore, India"</span><span className={pun}>,</span></div>
-                  <div className="pl-4"><span className={key}>openToWork</span><span className={pun}>:</span> <span className={kw}>true</span><span className={pun}>,</span></div>
-                  <div><span className={pun}>{'}'};</span></div>
-                  <div className="h-3" />
-                  <div className={cm}>{'// ▸ turning ideas into products'}</div>
-                  <div>
-                    <span className="text-foreground">developer</span><span className={pun}>.</span><span className={kw}>ship</span><span className={pun}>();</span>
-                    <span className="inline-block w-[7px] h-[15px] ml-1 bg-primary align-middle animate-blink" />
-                  </div>
-                </div>
-              </div>
-            </motion.div>
+                    {/* code */}
+                    <div className="p-5 font-mono text-[13px] leading-7 overflow-x-auto">
+                      <div><span className={kw}>const</span> <span className="text-foreground">developer</span> <span className={pun}>= {'{'}</span></div>
+                      <div className="pl-4"><span className={key}>name</span><span className={pun}>:</span> <span className={str}>"Bhuvan N"</span><span className={pun}>,</span></div>
+                      <div className="pl-4"><span className={key}>role</span><span className={pun}>:</span> <span className={str}>"Full Stack Developer"</span><span className={pun}>,</span></div>
+                      <div className="pl-4"><span className={key}>stack</span><span className={pun}>:</span> <span className={pun}>[</span><span className={str}>"React"</span><span className={pun}>,</span> <span className={str}>"Next.js"</span><span className={pun}>,</span> <span className={str}>"Java"</span><span className={pun}>,</span></div>
+                      <div className="pl-[4.5rem]"><span className={str}>"Spring Boot"</span><span className={pun}>,</span> <span className={str}>"FastAPI"</span><span className={pun}>],</span></div>
+                      <div className="pl-4"><span className={key}>location</span><span className={pun}>:</span> <span className={str}>"Bangalore, India"</span><span className={pun}>,</span></div>
+                      <div className="pl-4"><span className={key}>openToWork</span><span className={pun}>:</span> <span className={kw}>true</span><span className={pun}>,</span></div>
+                      <div><span className={pun}>{'}'};</span></div>
+                      <div className="h-3" />
+                      <div className={cm}>{'// ▸ turning ideas into products'}</div>
+                      <div>
+                        <span className="text-foreground">developer</span><span className={pun}>.</span><span className={kw}>ship</span><span className={pun}>();</span>
+                        <span className="inline-block w-[7px] h-[15px] ml-1 bg-primary align-middle animate-blink" />
+                      </div>
+                    </div>
+                  </motion.div>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </motion.div>
         </div>
       </div>
