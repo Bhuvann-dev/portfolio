@@ -29,6 +29,13 @@ const HeroSection = () => {
       id="home"
       className="relative min-h-screen flex items-center overflow-hidden bg-background"
     >
+      {/* Aurora blobs */}
+      <div className="absolute inset-0 -z-10 overflow-hidden">
+        <div className="aurora-1 absolute -top-[15%] right-[10%] w-[38rem] h-[38rem] rounded-full bg-primary/30 blur-[120px]" />
+        <div className="aurora-2 absolute -bottom-[20%] left-[6%] w-[34rem] h-[34rem] rounded-full bg-secondary/25 blur-[120px]" />
+        <div className="aurora-3 absolute top-[20%] -right-[8%] w-[30rem] h-[30rem] rounded-full bg-primary/25 blur-[110px]" />
+      </div>
+
       {/* Radial accent glow */}
       <div className="accent-glow absolute inset-0 -z-10" />
 
