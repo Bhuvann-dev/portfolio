@@ -54,7 +54,7 @@ const projects = [
     gradient: 'from-violet-500/80 to-purple-600/80',
     techStack: ['TypeScript', 'Node.js', 'AI / LLM', 'CLI'],
     liveUrl: null,
-    githubUrl: null,
+    githubUrl: 'https://github.com/Bhuvann-dev/github-code-review-agent',
     status: 'In Progress',
   },
   {
