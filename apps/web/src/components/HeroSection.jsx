@@ -27,22 +27,13 @@ const HeroSection = () => {
   return (
     <section
       id="home"
-      className="relative isolate min-h-screen flex items-center overflow-hidden bg-background"
+      className="relative min-h-screen flex items-center overflow-hidden bg-background"
     >
-      {/* Aurora blobs — radial-gradient orbs with bright cores */}
+      {/* Aurora blobs */}
       <div className="absolute inset-0 -z-10 overflow-hidden">
-        <div
-          className="aurora-1 absolute -top-40 -right-24 w-[52rem] h-[52rem]"
-          style={{ background: 'radial-gradient(circle at center, hsl(258 92% 68% / 0.55), transparent 62%)' }}
-        />
-        <div
-          className="aurora-2 absolute -bottom-48 -left-24 w-[46rem] h-[46rem]"
-          style={{ background: 'radial-gradient(circle at center, hsl(272 85% 72% / 0.45), transparent 62%)' }}
-        />
-        <div
-          className="aurora-3 absolute top-1/3 right-1/4 w-[38rem] h-[38rem]"
-          style={{ background: 'radial-gradient(circle at center, hsl(250 90% 66% / 0.4), transparent 65%)' }}
-        />
+        <div className="aurora-1 absolute -top-[15%] right-[10%] w-[38rem] h-[38rem] rounded-full bg-primary/30 blur-[120px]" />
+        <div className="aurora-2 absolute -bottom-[20%] left-[6%] w-[34rem] h-[34rem] rounded-full bg-secondary/25 blur-[120px]" />
+        <div className="aurora-3 absolute top-[20%] -right-[8%] w-[30rem] h-[30rem] rounded-full bg-primary/25 blur-[110px]" />
       </div>
 
       {/* Radial accent glow */}

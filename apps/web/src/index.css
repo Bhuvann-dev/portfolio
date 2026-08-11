@@ -137,7 +137,7 @@ body::after {
 
 /* Accent radial glow for hero */
 .accent-glow {
-  background: radial-gradient(60% 60% at 50% 40%, hsl(var(--primary) / 0.3), transparent 70%);
+  background: radial-gradient(60% 60% at 50% 40%, hsl(var(--primary) / 0.22), transparent 70%);
 }
 
 /* In light mode, lift solid cards off the near-white background */
