@@ -7,7 +7,7 @@ const AboutSection = () => {
   const [stats, setStats] = useState({ years: 0, projects: 0, technologies: 0 });
 
   useEffect(() => {
-    const target = { years: 3, projects: 5, technologies: 20 };
+    const target = { years: 1.5, projects: 4, technologies: 20 };
     const steps = 50;
     let current = 0;
     const timer = setInterval(() => {
