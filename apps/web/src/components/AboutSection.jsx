@@ -56,10 +56,11 @@ const AboutSection = () => {
               I turn ideas into products — from database to interface.
             </h3>
             <p className="text-muted-foreground leading-relaxed">
-              I build complete web applications across the stack: React &amp; Next.js on the front,
-              Java/Spring Boot, Node and FastAPI on the back. I came into software from a technical-art
-              background — writing scripts and automation tools in a production pipeline — and that mix
-              of problem-solving and craft shapes everything I ship.
+              I build complete web applications across the stack — React &amp; Next.js on the front,
+              Java/Spring Boot, Node and FastAPI on the back — with a growing focus on AI agents and
+              automations that solve real operational problems. I came into software from a technical-art
+              background, writing scripts and automation tools in a production pipeline, and that mix of
+              problem-solving and craft shapes everything I ship.
             </p>
           </motion.div>
 

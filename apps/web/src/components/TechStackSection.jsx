@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Code2, Server, Database, Wrench } from 'lucide-react';
+import { Code2, Server, Database, Wrench, Bot, Sparkles } from 'lucide-react';
 import {
   SiReact,
   SiNextdotjs,
@@ -23,6 +23,7 @@ import {
 } from 'react-icons/si';
 import { FaJava } from 'react-icons/fa6';
 import { TbBrandVscode } from 'react-icons/tb';
+import { SiClaude, SiPython, SiCelery, SiJunit5 } from 'react-icons/si';
 import SectionHeading from '@/components/SectionHeading';
 
 const TechStackSection = () => {
@@ -52,6 +53,17 @@ const TechStackSection = () => {
       ],
     },
     {
+      category: 'AI & Automation',
+      icon: Bot,
+      color: 'from-violet-500 to-purple-500',
+      technologies: [
+        { name: 'OpenAI', Icon: Sparkles, color: '#10A37F' },
+        { name: 'Claude', Icon: SiClaude, color: '#D97757' },
+        { name: 'Python', Icon: SiPython, color: '#3776AB' },
+        { name: 'Celery', Icon: SiCelery, color: '#37814A' },
+      ],
+    },
+    {
       category: 'Databases',
       icon: Database,
       color: 'from-purple-500 to-pink-500',
@@ -72,6 +84,7 @@ const TechStackSection = () => {
         { name: 'Docker', Icon: SiDocker, color: '#2496ED' },
         { name: 'Redis', Icon: SiRedis, color: '#FF4438' },
         { name: 'Postman', Icon: SiPostman, color: '#FF6C37' },
+        { name: 'JUnit', Icon: SiJunit5, color: '#25A162' },
         { name: 'VS Code', Icon: TbBrandVscode, color: '#007ACC' },
       ],
     },
@@ -104,7 +117,7 @@ const TechStackSection = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {techCategories.map((category, categoryIndex) => (
             <motion.div
               key={category.category}
