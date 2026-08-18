@@ -89,9 +89,9 @@ const HeroSection = () => {
               variants={item}
               className="text-lg md:text-xl text-muted-foreground max-w-xl mb-10 leading-relaxed"
             >
-              I work across the whole stack — React &amp; Next.js on the front, Java/Spring Boot,
-              Node and FastAPI on the back — turning ideas into clean, reliable products from database
-              through to interface.
+              I build full-stack products end to end — React &amp; Next.js, Java/Spring Boot and
+              FastAPI — with a growing focus on AI agents and automations that solve real operational
+              problems.
             </motion.p>
 
             <motion.div variants={item} className="flex flex-col sm:flex-row gap-4">
